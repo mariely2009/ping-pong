@@ -1,15 +1,14 @@
 // Criar Bolinha
-
 let raio = 7.5;
 let xBolinha = 100;
-let yBolainha = 200;
+let yBolinha = 200;
 let diametro = raio * 2;
 
 // Velocidade da bolinha
 let velocidadeXBolinha = 6;
 let velocidadeYBolinha = 6;
 
-// Minha Raquete 
+// Minha Raquete
 let xRaquete = 5;
 let yRaquete = 150;
 
@@ -19,11 +18,69 @@ let yRaqueteOponente = 150;
 
 // Placar
 let meusPontos = 0;
-let pontosOponente  = 0;
+let pontosOponente = 0;
 
-function setup(){
-    createCanvas(600,400);
+// dificuldade
+
+let dificuldade = "Normal";
+let trilha,ponto,raquetada;
+
+function preload(){
+  trilha = loadSound("trilha.mp3")
+  ponto = loadSound("ponto.mp3")
+  raquetada = loadSound("raquetada.mp3")
 }
+
+function setup (){
+    createCanvas(600,400);
+  trilha.loop()
+}
+
 function draw(){
+  background(0);
+  movimentoBolinha();
+  raquetes(xRaquete,yRaquete)
+  raquetes(xRaqueteOponente,
+          yRaqueteOponente);
+  npc(dificuldade);
+  
+  if(keyIsDown(UP_ARROW)){
+    yRaquete -= 10}
+  
+  if(keyIsDown(DOWN_ARROW)){
+    yRaquete += 10}
+  
+  if(xBolinha -raio < xRaquete + 10 &
+     yBolinha-raio< yRaquete + 90 &
+     yBolinha +raio > yRaquete ){
+    velocidadeXBolinha *= -1;
+    raquete.play()}
   
 }
+
+function movimentoBolinha(){
+  circle(xBolinha,yBolinha,diametro);
+  
+  xBolinha += velocidadeXBolinha;
+  yBolinha += velocidadeYBolinha;
+  if(xBolinha + raio > width || xBolinha-raio < 0){
+    velociadadeXBolinha *= -1;
+  }
+  if(yBolinha + raio > height|| yBolinha -raio < 0){
+    velocidadeYBolinha *= -1}}
+
+function raquetes(xRaquete,yRaquete){
+  rect(xRaquete,yRaquete, 10,90)
+  
+}
+
+if(xBolinha -raio < xRaquete + 10 &
+  yBolinha-raio< yRaquete + 90 & 
+  yBolinha +raio > yRaquete ){
+  velocidadeXBolinha *= -1;
+  raquetada,play()}
+if (xBolinha = raio > xRaqueteOponente & 
+   yBolinha - raio < yRaqueteOponente + 90 &
+   yBolinha + raio > yRaqueOteponente) {
+  velocidadexBolinha += -1;
+raquetada.play()}
