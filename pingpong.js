@@ -51,15 +51,44 @@ function draw(){
     yRaquete += 10}
   
   if(xBolinha -raio < xRaquete + 10 &
-     yBolinha-raio< yRaquete + 90 &
-     yBolinha +raio > yRaquete ){
-    velocidadeXBolinha *= -1;
-    raquete.play()}
+  yBolinha-raio< yRaquete + 90 & 
+  yBolinha +raio > yRaquete ){
+  velocidadeXBolinha *= -1;
+  raquetada.play()}
+if (xBolinha + raio > xRaqueteOponente & 
+   yBolinha - raio < yRaqueteOponente + 90 &
+   yBolinha + raio > yRaqueteOponente) {
+  velocidadexBolinha += -1;
+raquetada.play()}
+  
+  
+  textSize(18)
+  textAlign(CENTER) ;
+  fill(color(255,0,233));
+  rect(150,10,40,20) ;
+  fill(255)
+  text(meusPontos,170,26);
+  fill(color(255,0,233));
+  rect(255)
+  text(pontosOponentes, 470,26);
+  
+  if(xBolinha>595){
+    meusPontos += 1;
+    ponto.play()
+  }
+  if(xBolinha< 10){
+    pontosOponentes +=1;
+    pontp.play()
+  }
+
+
+  
   
 }
 
 function movimentoBolinha(){
   circle(xBolinha,yBolinha,diametro);
+  
   
   xBolinha += velocidadeXBolinha;
   yBolinha += velocidadeYBolinha;
@@ -73,14 +102,13 @@ function raquetes(xRaquete,yRaquete){
   rect(xRaquete,yRaquete, 10,90)
   
 }
-
-if(xBolinha -raio < xRaquete + 10 &
-  yBolinha-raio< yRaquete + 90 & 
-  yBolinha +raio > yRaquete ){
-  velocidadeXBolinha *= -1;
-  raquetada,play()}
-if (xBolinha = raio > xRaqueteOponente & 
-   yBolinha - raio < yRaqueteOponente + 90 &
-   yBolinha + raio > yRaqueOteponente) {
-  velocidadexBolinha += -1;
-raquetada.play()}
+function npc(){
+  var nivel = 30;
+  if(dificuldade ==="Fàcil"){
+    nivel = 100
+  }
+    if(dificuldade ==="Normal"){
+}
+     let velocidadeYRaqueteOponente = yBolinha - yRaqueteOponente - 10/2;
+  yRaqueteOponente += velocidadeYRaqueteOponente - nivel;
+  }
