@@ -81,9 +81,6 @@ raquetada.play()}
     pontp.play()
   }
 
-
-  
-  
 }
 
 function movimentoBolinha(){
